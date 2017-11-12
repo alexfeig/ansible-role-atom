@@ -1,17 +1,10 @@
 ---
-- name: ensure ca-certificates installed
-  become: yes
+- name: Downloading Atom from github
+  get_url:
+    url: https://github.com/atom/atom/releases/download/{{ atom_version }}/atom-amd64.deb
+    dest: /tmp/
+    
+- name: Installing Atom
   apt:
-    name: ca-certificates
-    state: present
-
-- name: add atom ppa
-  become: yes
-  apt_repository:
-    repo: 'ppa:webupd8team/atom'
-
-- name: install atom
-  become: yes
-  apt:
-    name: atom
-    state: present
+    deb: /tmp/atom-amd64.deb
+    force: 'yes'

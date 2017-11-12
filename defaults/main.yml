@@ -1,3 +1,4 @@
 ---
 # Users to install packages for and/or write config.cson
 users: []
+atom_version: 1.22.0
